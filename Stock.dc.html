@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Automobile sur Mesure · Nos véhicules</title>
+<script src="./_runtime/react.js"></script>
+<script src="./_runtime/react-dom.js"></script>
+<script src="./_runtime/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+a{color:#fff;text-decoration:none}a:hover{color:#c9c9c9}
+</style>
+</helmet>
+<div style="background: #000; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 300; width: 100%">
+
+<header style="border-bottom: 1px solid rgba(255,255,255,0.14)">
+<div style="max-width: 1320px; margin: 0 auto; padding: 18px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px">
+<a href="Main.dc.html" aria-label="Automobile sur Mesure, accueil"><img src="./assets/1a5fdc9baa9750bd835f2d23a06a3a2e.jpg" alt="Automobile sur Mesure" style="height: 58px; width: auto; display: block"></a>
+<nav aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; gap: 30px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500">
+<a href="Main.dc.html">Accueil</a>
+<a href="Stock.dc.html" style="border-bottom: 1px solid #fff; padding-bottom: 4px">Nos véhicules</a>
+<a href="Depot.dc.html">Dépôt-vente</a>
+<a href="Main.dc.html#services">Services</a>
+<a href="Main.dc.html#contact">Contact</a>
+</nav>
+<a href="tel:0687426446" style="font-size: 14px; letter-spacing: 0.06em; font-weight: 500">06 87 42 64 46</a>
+</div>
+</header>
+
+<section style="max-width: 1320px; margin: 0 auto; padding: 90px 40px 40px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 500; color: #a8a8a8">Showroom · Frépillon</p>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(44px, 5vw, 68px); line-height: 1.02">Nos véhicules</h1>
+<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.7; color: #cfcfcf">Sport, prestige et exception. Chaque véhicule est sélectionné, contrôlé et visible sur rendez-vous.</p>
+</section>
+
+<section aria-label="Filtres" style="max-width: 1320px; margin: 0 auto; padding: 20px 40px 0">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.14)">
+<sc-for list="{{brands}}" as="b" hint-placeholder-count="6">
+<button type="button" onClick="{{b.pick}}" aria-pressed="{{b.on}}" style="{{b.style}}">{{b.label}}</button>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding: 24px 0">
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #a8a8a8">Budget max
+<select style="background: #0d0d0d; color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 13px 14px; font-family: inherit; font-size: 14px; min-height: 46px"><option>Tous les prix</option><option>150 000 €</option><option>250 000 €</option><option>400 000 €</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #a8a8a8">Année min
+<select style="background: #0d0d0d; color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 13px 14px; font-family: inherit; font-size: 14px; min-height: 46px"><option>Toutes</option><option>2018</option><option>2020</option><option>2023</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #a8a8a8">Kilométrage max
+<select style="background: #0d0d0d; color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 13px 14px; font-family: inherit; font-size: 14px; min-height: 46px"><option>Tous</option><option>10 000 km</option><option>30 000 km</option><option>50 000 km</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #a8a8a8">Trier par
+<select style="background: #0d0d0d; color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 13px 14px; font-family: inherit; font-size: 14px; min-height: 46px"><option>Prix décroissant</option><option>Prix croissant</option><option>Plus récents</option><option>Kilométrage</option></select></label>
+</div>
+<p style="margin: 0; font-size: 13px; color: #a8a8a8">{{count}}</p>
+</section>
+
+<section aria-label="Véhicules" style="max-width: 1320px; margin: 0 auto; padding: 28px 40px 110px">
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px">
+<sc-for list="{{shown}}" as="car" hint-placeholder-count="6">
+<article style="display: flex; flex-direction: column; background: #0d0d0d; border: 1px solid rgba(255,255,255,0.1)">
+<img src="{{car.img}}" alt="{{car.brand}} {{car.name}}" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block">
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: #a8a8a8; font-weight: 500">{{car.brand}}</span>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 27px; line-height: 1.15">{{car.name}}</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px">
+<span style="font-size: 12px; border: 1px solid rgba(255,255,255,0.2); padding: 6px 10px">{{car.year}}</span>
+<span style="font-size: 12px; border: 1px solid rgba(255,255,255,0.2); padding: 6px 10px">{{car.km}}</span>
+<span style="font-size: 12px; border: 1px solid rgba(255,255,255,0.2); padding: 6px 10px">{{car.power}}</span>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.12)">
+<span style="font-size: 20px; font-weight: 500">{{car.price}}</span>
+<a href="Fiche.dc.html" style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; border: 1px solid #fff; padding: 12px 16px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Voir la fiche</a>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+<div style="margin-top: 70px; padding: 48px; border: 1px solid rgba(255,255,255,0.14); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 640px">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 36px">Vous ne trouvez pas votre modèle ?</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.7; color: #cfcfcf">Recherche personnalisée et importation : dites-nous ce que vous cherchez, nous le trouvons pour vous.</p>
+</div>
+<a href="Main.dc.html#contact" style="background: #fff; color: #000; padding: 18px 30px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600">Lancer une recherche</a>
+</div>
+</section>
+
+<footer style="border-top: 1px solid rgba(255,255,255,0.14)">
+<div style="max-width: 1320px; margin: 0 auto; padding: 30px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 12px; color: #8f8f8f">
+<span>© 2026 Automobile sur Mesure · 8 avenue Roland Moreno, 95740 Frépillon</span>
+<span>Mentions légales · Confidentialité</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { brand: 'Toutes' }; }
+  renderVals() {
+    const cars = [
+      { brand: 'Porsche', name: '911 (992) GT3 RS Pack Weissach', year: '2023', km: '1 500 km', power: '525 ch', price: '399 990 €', img: './assets/32949478d6d799a110752b3bd32a97b7.jpg' },
+      { brand: 'Lamborghini', name: 'Urus Performante V8 Biturbo', year: '2025', km: '4 990 km', power: '666 ch', price: '324 990 €', img: './assets/93b6e53f39346882cb37d027c51379f1.jpg' },
+      { brand: 'Porsche', name: '911 (992) Targa 4 GTS E-Hybrid', year: '2025', km: '7 990 km', power: '541 ch', price: '259 990 €', img: './assets/a8dfe8faaff6caabad7b164d46ea7fd7.jpg' },
+      { brand: 'Bentley', name: 'Continental GTC W12 Centenary', year: '2019', km: '19 990 km', power: '635 ch', price: '229 990 €', img: './assets/73b065e85cf2b6292738ee2f1ff89dba.jpg' },
+      { brand: 'Ferrari', name: 'Portofino 3.9 V8', year: '2018', km: '24 990 km', power: '600 ch', price: '209 990 €', img: './assets/3a205cb290ac942a7d37dc1076b9b465.jpg' },
+      { brand: 'Mercedes-AMG', name: 'S 63 E Limousine', year: '2023', km: '19 990 km', power: '802 ch', price: '174 990 €', img: './assets/1aa345c636dacfee1e3de3024fd5752b.jpg' }
+    ];
+    const cur = this.state.brand;
+    const labels = ['Toutes', 'Porsche', 'Lamborghini', 'Bentley', 'Ferrari', 'Mercedes-AMG'];
+    const base = 'font-family: inherit; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; padding: 12px 18px; min-height: 44px; cursor: pointer; border: 1px solid #fff; ';
+    const brands = labels.map((l) => ({
+      label: l,
+      on: l === cur ? 'true' : 'false',
+      style: base + (l === cur ? 'background: #fff; color: #000;' : 'background: transparent; color: #fff;'),
+      pick: () => this.setState({ brand: l })
+    }));
+    const shown = cur === 'Toutes' ? cars : cars.filter((c) => c.brand === cur);
+    return { brands, shown, count: shown.length + (shown.length > 1 ? ' véhicules affichés' : ' véhicule affiché') };
+  }
+}
+</script>
+</body>
+</html>

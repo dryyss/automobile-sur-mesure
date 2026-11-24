@@ -1,0 +1,165 @@
+{
+  "source": "https://www.automobilesurmesure.com/stock (page 1, relevé du 20/11/2026)",
+  "vehicules": [
+    {
+      "marque": "Porsche",
+      "modele": "911 (992) 4.0 GT3 RS PDK 525cv Pack Weissach",
+      "annee": 2023,
+      "kilometrage": 1500,
+      "prix": 399990,
+      "photo": "assets/photos/gt3rs.jpg"
+    },
+    {
+      "marque": "Lamborghini",
+      "modele": "Urus Performante 4.0 666 V8 Biturbo",
+      "annee": 2025,
+      "kilometrage": 4990,
+      "prix": 324990,
+      "photo": "assets/photos/urus.jpg"
+    },
+    {
+      "marque": "Porsche",
+      "modele": "911 Type 992 Targa 4 GTS 3.6 541 E-Hybrid Phase 2",
+      "annee": 2025,
+      "kilometrage": 7990,
+      "prix": 259990,
+      "photo": "assets/photos/targa.jpg"
+    },
+    {
+      "marque": "Porsche",
+      "modele": "911 (992) 4.0 GT3 510 Touring",
+      "annee": 2023,
+      "kilometrage": 4490,
+      "prix": 259990,
+      "photo": null
+    },
+    {
+      "marque": "Bentley",
+      "modele": "Continental GTC W12 6.0 635 Centenary Edition",
+      "annee": 2019,
+      "kilometrage": 19990,
+      "prix": 229990,
+      "photo": "assets/photos/bentley.jpg"
+    },
+    {
+      "marque": "Ferrari",
+      "modele": "Portofino 3.9 600 V8",
+      "annee": 2018,
+      "kilometrage": 24990,
+      "prix": 209990,
+      "photo": "assets/photos/portofino.jpg"
+    },
+    {
+      "marque": "Mercedes",
+      "modele": "Classe S 63E 4.0 V8 802 AMG Limousine",
+      "annee": 2023,
+      "kilometrage": 19990,
+      "prix": 174990,
+      "photo": "assets/photos/s63.jpg"
+    },
+    {
+      "marque": "Audi",
+      "modele": "RS6 4.0 V8 TFSI 630 Performance",
+      "annee": 2023,
+      "kilometrage": 8990,
+      "prix": 157990,
+      "photo": null
+    },
+    {
+      "marque": "Porsche",
+      "modele": "911 3.0 480 Type 992 Targa 4 GTS",
+      "annee": 2023,
+      "kilometrage": 29990,
+      "prix": 154992,
+      "photo": null
+    },
+    {
+      "marque": "Mercedes",
+      "modele": "CLE 53 AMG 3.0 6 cylindres 449",
+      "annee": 2024,
+      "kilometrage": 1990,
+      "prix": 149990,
+      "photo": null
+    },
+    {
+      "marque": "BMW",
+      "modele": "M3 CS 2.0 550 Berline G80",
+      "annee": 2023,
+      "kilometrage": 14990,
+      "prix": 142990,
+      "photo": null
+    },
+    {
+      "marque": "Porsche",
+      "modele": "911 Cabriolet 3.0i 450 PDK 991 Carrera 4 GTS",
+      "annee": 2017,
+      "kilometrage": 39990,
+      "prix": 139990,
+      "photo": null
+    },
+    {
+      "marque": "BMW",
+      "modele": "XM 4.4 V8 BVA Sport G09",
+      "annee": 2023,
+      "kilometrage": 7450,
+      "prix": 134990,
+      "photo": null
+    },
+    {
+      "marque": "Porsche",
+      "modele": "911 3.0 450 Type 992 Carrera S",
+      "annee": 2019,
+      "kilometrage": 44990,
+      "prix": 131990,
+      "photo": null
+    },
+    {
+      "marque": "Porsche",
+      "modele": "911 992 Carrera S 3.0 450 Coupé PDK",
+      "annee": 2019,
+      "kilometrage": 39990,
+      "prix": 131990,
+      "photo": null
+    },
+    {
+      "marque": "Land Rover",
+      "modele": "Range Rover Sport Autobiography 3.0 P510e",
+      "annee": 2023,
+      "kilometrage": 1500,
+      "prix": 129990,
+      "photo": null
+    },
+    {
+      "marque": "Audi",
+      "modele": "RS6 C8 4.0 V8 TFSI 600",
+      "annee": 2022,
+      "kilometrage": 39990,
+      "prix": 127990,
+      "photo": null
+    },
+    {
+      "marque": "Bentley",
+      "modele": "Bentayga 6.0 W12 608",
+      "annee": 2017,
+      "kilometrage": 34990,
+      "prix": 124990,
+      "photo": null
+    },
+    {
+      "marque": "BMW",
+      "modele": "M3 xDrive 3.0 510 G80 LCI Competition",
+      "annee": 2023,
+      "kilometrage": 11990,
+      "prix": 124990,
+      "photo": null
+    },
+    {
+      "marque": "Audi",
+      "modele": "R8 Spyder 5.2 540 V10",
+      "annee": 2017,
+      "kilometrage": 44990,
+      "prix": 121990,
+      "photo": null
+    }
+  ]
+}

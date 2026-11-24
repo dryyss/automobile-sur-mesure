@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Automobile sur Mesure · Back-office</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f4f4f2}
+a{color:#111}a:hover{color:#555}
+.navb:hover{background:#1a1a1a!important}
+.tr:hover{background:#fafaf8}
+</style>
+</helmet>
+<div style="font-family: 'Montserrat', sans-serif; color: #111; background: #f4f4f2; width: 100%; min-height: 1200px; display: flex; flex-wrap: wrap; align-items: stretch">
+
+<aside aria-label="Menu du back-office" style="flex: 1 1 240px; max-width: 100%; background: #000; color: #fff; padding: 26px 18px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<img src="../assets/logo-asm.jpg" alt="Automobile sur Mesure" style="height: 50px; width: auto; align-self: flex-start">
+<nav style="display: flex; flex-direction: column; gap: 4px">
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="4">
+<button type="button" class="navb" onClick="{{n.go}}" aria-current="{{n.cur}}" style="{{n.style}}">{{n.label}}<span style="{{n.badgeStyle}}">{{n.badge}}</span></button>
+</sc-for>
+</nav>
+<div style="margin-top: auto; font-size: 12px; color: #9a9a9a; line-height: 1.6; border-top: 1px solid #222; padding-top: 18px">Connecté en tant qu'administrateur<br><a href="Main.dc.html" style="color: #fff">Voir le site →</a></div>
+</aside>
+
+<main style="flex: 999 1 640px; min-width: 0; padding: 34px 40px 60px; box-sizing: border-box; display: flex; flex-direction: column; gap: 26px">
+
+<sc-if value="{{toast}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="background: #111; color: #fff; padding: 14px 18px; font-size: 13px; display: flex; justify-content: space-between; gap: 12px; align-items: center"><span>{{toastText}}</span><button type="button" onClick="{{closeToast}}" aria-label="Fermer le message" style="background: transparent; border: 0; color: #fff; font-size: 18px; cursor: pointer; min-width: 44px; min-height: 36px">×</button></div>
+</sc-if>
+
+<sc-if value="{{isStock}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 26px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div><p style="margin: 0 0 6px; font-size: 12px; color: #777">Données de démonstration</p><h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 40px">Véhicules</h1></div>
+<button type="button" onClick="{{goAjout}}" style="background: #000; color: #fff; border: 0; padding: 15px 22px; font-family: inherit; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; cursor: pointer; min-height: 48px">+ Ajouter un véhicule</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px">
+<div style="background: #fff; border: 1px solid #e4e2dd; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: #666">En ligne</span><span style="font-size: 28px; font-weight: 600">{{online}}</span></div>
+<div style="background: #fff; border: 1px solid #e4e2dd; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: #666">Réservés</span><span style="font-size: 28px; font-weight: 600">{{reserved}}</span></div>
+<div style="background: #fff; border: 1px solid #e4e2dd; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: #666">Valeur du stock</span><span style="font-size: 28px; font-weight: 600">{{value}}</span></div>
+<div style="background: #fff; border: 1px solid #e4e2dd; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: #666">Demandes à traiter</span><span style="font-size: 28px; font-weight: 600">{{pending}}</span></div>
+</div>
+<div style="background: #fff; border: 1px solid #e4e2dd; overflow-x: auto">
+<table style="width: 100%; border-collapse: collapse; font-size: 14px; min-width: 760px">
+<thead><tr style="text-align: left; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #666"><th style="padding: 14px 18px; font-weight: 600">Véhicule</th><th style="padding: 14px; font-weight: 600">Année</th><th style="padding: 14px; font-weight: 600">Km</th><th style="padding: 14px; font-weight: 600">Prix</th><th style="padding: 14px; font-weight: 600">Statut</th><th style="padding: 14px 18px; font-weight: 600; text-align: right">Actions</th></tr></thead>
+<tbody>
+<sc-for list="{{cars}}" as="c" hint-placeholder-count="6">
+<tr class="tr" style="border-top: 1px solid #eeece8">
+<td style="padding: 12px 18px"><div style="display: flex; gap: 14px; align-items: center"><img src="{{c.img}}" alt="{{c.name}}" style="width: 84px; height: 56px; object-fit: cover; flex: none"><div style="display: flex; flex-direction: column; gap: 3px"><span style="font-weight: 600">{{c.brand}}</span><span style="color: #555; font-size: 13px">{{c.name}}</span></div></div></td>
+<td style="padding: 12px 14px">{{c.year}}</td>
+<td style="padding: 12px 14px">{{c.km}}</td>
+<td style="padding: 12px 14px; font-weight: 600">{{c.price}}</td>
+<td style="padding: 12px 14px"><button type="button" onClick="{{c.cycle}}" title="Changer le statut" style="{{c.pill}}">{{c.status}}</button></td>
+<td style="padding: 12px 18px; text-align: right; white-space: nowrap"><a href="Fiche.dc.html" style="font-size: 13px; font-weight: 600; margin-right: 16px">Voir</a><button type="button" onClick="{{goAjout}}" style="background: transparent; border: 1px solid #ccc; padding: 9px 14px; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer; min-height: 40px">Modifier</button></td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+<p style="margin: 0; font-size: 12px; color: #777">Astuce : cliquez sur un statut pour le passer de « En ligne » à « Réservé » puis « Vendu ». Un véhicule vendu disparaît du site.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{isAjout}}" hint-placeholder-val="{{ false }}">
+<form onSubmit="{{publish}}" style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div><button type="button" onClick="{{goStock}}" style="background: transparent; border: 0; padding: 0 0 6px; font-family: inherit; font-size: 12px; color: #666; cursor: pointer">← Retour aux véhicules</button><h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 40px">Ajouter un véhicule</h1></div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap"><button type="button" onClick="{{goStock}}" style="background: #fff; border: 1px solid #ccc; padding: 14px 20px; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer; min-height: 48px">Enregistrer en brouillon</button><button type="submit" style="background: #000; color: #fff; border: 0; padding: 14px 22px; font-family: inherit; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; cursor: pointer; min-height: 48px">Publier sur le site</button></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
+<div style="flex: 1.2 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<fieldset style="margin: 0; background: #fff; border: 1px solid #e4e2dd; padding: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px">
+<legend style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; padding: 0 6px">Informations</legend>
+<label style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 500">Marque<select style="border: 1px solid #ccc; padding: 12px; font-family: inherit; font-size: 14px; min-height: 46px; background: #fff"><option>Lamborghini</option><option>Porsche</option><option>Ferrari</option><option>Bentley</option><option>Mercedes-AMG</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 500">Modèle et version<input type="text" value="Urus Performante 4.0 V8" style="border: 1px solid #ccc; padding: 12px; font-family: inherit; font-size: 14px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 500">Mise en circulation<input type="text" value="05/2025" style="border: 1px solid #ccc; padding: 12px; font-family: inherit; font-size: 14px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 500">Kilométrage<input type="text" value="4 990" style="border: 1px solid #ccc; padding: 12px; font-family: inherit; font-size: 14px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 500">Puissance (ch)<input type="text" value="666" style="border: 1px solid #ccc; padding: 12px; font-family: inherit; font-size: 14px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 500">Prix (€)<input type="text" value="324 990" style="border: 1px solid #ccc; padding: 12px; font-family: inherit; font-size: 14px; min-height: 46px; box-sizing: border-box"></label>
+<label style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 500">Équipements (un par ligne)<textarea rows="4" style="border: 1px solid #ccc; padding: 12px; font-family: inherit; font-size: 14px; resize: vertical"></textarea></label>
+<label style="grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; font-size: 13px"><input type="checkbox" checked style="width: 20px; height: 20px; margin: 0">Mettre en avant sur la page d'accueil (« À la une »)</label>
+</fieldset>
+</div>
+<div style="flex: 1 1 380px; min-width: 0; background: #fff; border: 1px solid #e4e2dd; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600">Photos</span>
+<div style="position: relative; overflow: hidden">
+<img src="../assets/photos/urus.jpg" alt="Aperçu de la photo principale : Lamborghini Urus" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block">
+<sc-if value="{{plate}}" hint-placeholder-val="{{ true }}">
+<div aria-hidden="true" style="position: absolute; left: 85.4%; top: 66.2%; width: 11.4%; height: 7.4%; background: #000; color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 11px; display: flex; align-items: center; justify-content: center; letter-spacing: 0.08em">ASM</div>
+</sc-if>
+<span style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.75); color: #fff; font-size: 11px; padding: 6px 9px">{{previewLabel}}</span>
+</div>
+<label style="display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; padding: 12px 0; border-top: 1px solid #eeece8"><span><strong style="font-weight: 600">Masquer la plaque</strong><br><span style="color: #666; font-size: 12px">Détection et masquage automatiques</span></span><input type="checkbox" checked="{{plate}}" onChange="{{togglePlate}}" style="width: 22px; height: 22px; margin: 0"></label>
+<label style="display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; padding: 12px 0; border-top: 1px solid #eeece8"><span><strong style="font-weight: 600">Fond studio</strong><br><span style="color: #666; font-size: 12px">Remplace le décor par le fond showroom</span></span><input type="checkbox" checked="{{studio}}" onChange="{{toggleStudio}}" style="width: 22px; height: 22px; margin: 0"></label>
+<label style="border: 1px dashed #aaa; padding: 22px; text-align: center; font-size: 13px; color: #555; display: flex; flex-direction: column; gap: 8px; cursor: pointer">Glissez vos photos ici ou cliquez pour les ajouter<input type="file" multiple accept="image/*" style="font-size: 12px"></label>
+</div>
+</div>
+</form>
+</sc-if>
+
+<sc-if value="{{isDemandes}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div><p style="margin: 0 0 6px; font-size: 12px; color: #777">Exemples de demandes reçues via les formulaires du site</p><h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 40px">Demandes</h1></div>
+<div style="background: #fff; border: 1px solid #e4e2dd">
+<sc-for list="{{reqs}}" as="r" hint-placeholder-count="4">
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 18px 22px; border-bottom: 1px solid #eeece8">
+<span style="{{r.tagStyle}}">{{r.type}}</span>
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0"><span style="font-weight: 600; font-size: 14px">{{r.who}} · <span style="font-weight: 400; color: #555">{{r.subject}}</span></span><span style="font-size: 12px; color: #777">{{r.when}}</span></div>
+<button type="button" onClick="{{r.done}}" style="{{r.btnStyle}}">{{r.btn}}</button>
+</div>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 12px; color: #777">Chaque nouvelle demande arrive aussi par email, avec les photos jointes pour le dépôt-vente.</p>
+</div>
+</sc-if>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: 'stock', plate: true, studio: true, toast: '',
+      status: { 0: 'En ligne', 1: 'En ligne', 2: 'Réservé', 3: 'En ligne', 4: 'En ligne', 5: 'En ligne' },
+      doneReqs: {}
+    };
+  }
+  renderVals() {
+    const s = this.state;
+    const base = [
+      { brand: 'Porsche', name: '911 (992) GT3 RS Weissach', year: '2023', km: '1 500', p: 399990, img: '../assets/photos/gt3rs.jpg' },
+      { brand: 'Lamborghini', name: 'Urus Performante', year: '2025', km: '4 990', p: 324990, img: '../assets/photos/urus.jpg' },
+      { brand: 'Porsche', name: '911 Targa 4 GTS E-Hybrid', year: '2025', km: '7 990', p: 259990, img: '../assets/photos/targa.jpg' },
+      { brand: 'Bentley', name: 'Continental GTC W12', year: '2019', km: '19 990', p: 229990, img: '../assets/photos/bentley.jpg' },
+      { brand: 'Ferrari', name: 'Portofino 3.9 V8', year: '2018', km: '24 990', p: 209990, img: '../assets/photos/portofino.jpg' },
+      { brand: 'Mercedes-AMG', name: 'S 63 E Limousine', year: '2023', km: '19 990', p: 174990, img: '../assets/photos/s63.jpg' }
+    ];
+    const fmt = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' €';
+    const order = ['En ligne', 'Réservé', 'Vendu'];
+    const pillBase = 'border: 0; padding: 7px 12px; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer; min-height: 36px; ';
+    const pillCol = { 'En ligne': 'background: #e3f1e6; color: #1d5b2c;', 'Réservé': 'background: #fbeed3; color: #7a4d00;', 'Vendu': 'background: #e6e6e6; color: #444;' };
+    const cars = base.map((c, i) => {
+      const st = s.status[i];
+      return Object.assign({}, c, {
+        price: fmt(c.p), status: st, pill: pillBase + pillCol[st],
+        cycle: () => { const ns = Object.assign({}, this.state.status); ns[i] = order[(order.indexOf(st) + 1) % 3]; this.setState({ status: ns }); }
+      });
+    });
+    const online = base.filter((c, i) => s.status[i] === 'En ligne').length;
+    const reserved = base.filter((c, i) => s.status[i] === 'Réservé').length;
+    const value = fmt(base.filter((c, i) => s.status[i] !== 'Vendu').reduce((a, c) => a + c.p, 0));
+    const reqBase = [
+      { type: 'Dépôt-vente', who: 'Exemple · Thomas R.', subject: 'Porsche 911 Carrera S, 2021, 28 000 km', when: 'Aujourd\'hui, 10:42 · 6 photos' },
+      { type: 'Rendez-vous', who: 'Exemple · Sarah K.', subject: 'Visite pour la Lamborghini Urus Performante', when: 'Aujourd\'hui, 09:15 · samedi souhaité' },
+      { type: 'Recherche', who: 'Exemple · Yanis M.', subject: 'Cherche Audi RS6 Performance, budget 150 000 €', when: 'Hier, 18:30' },
+      { type: 'Rendez-vous', who: 'Exemple · Claire D.', subject: 'Informations sur la Ferrari Portofino', when: 'Hier, 14:02' }
+    ];
+    const tagCol = { 'Dépôt-vente': '#000;color:#fff', 'Rendez-vous': '#e9e7e2;color:#111', 'Recherche': '#dde7f3;color:#123a63' };
+    const reqs = reqBase.map((r, i) => {
+      const d = !!s.doneReqs[i];
+      return Object.assign({}, r, {
+        tagStyle: 'font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 7px 10px; text-align: center; background:' + tagCol[r.type],
+        btn: d ? 'Traitée' : 'Marquer traitée',
+        btnStyle: 'font-family: inherit; font-size: 12px; font-weight: 600; padding: 10px 14px; cursor: pointer; min-height: 40px; ' + (d ? 'background: #e3f1e6; color: #1d5b2c; border: 0;' : 'background: #fff; border: 1px solid #ccc; color: #111;'),
+        done: () => { const nd = Object.assign({}, this.state.doneReqs); nd[i] = !nd[i]; this.setState({ doneReqs: nd }); }
+      });
+    });
+    const pending = reqBase.length - Object.keys(s.doneReqs).filter((k) => s.doneReqs[k]).length;
+    const navItems = [
+      { id: 'stock', label: 'Véhicules', badge: '' },
+      { id: 'ajout', label: 'Ajouter un véhicule', badge: '' },
+      { id: 'demandes', label: 'Demandes', badge: pending ? String(pending) : '' }
+    ];
+    const nav = navItems.map((n) => {
+      const on = s.view === n.id;
+      return {
+        label: n.label, badge: n.badge, cur: on ? 'page' : 'false',
+        go: () => this.setState({ view: n.id, toast: '' }),
+        style: 'display: flex; justify-content: space-between; align-items: center; width: 100%; text-align: left; border: 0; padding: 13px 14px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer; min-height: 46px; color: #fff; background: ' + (on ? '#222' : 'transparent') + ';',
+        badgeStyle: n.badge ? 'background: #fff; color: #000; font-size: 11px; font-weight: 600; padding: 2px 8px' : 'display: none'
+      };
+    });
+    return {
+      nav, cars, online, reserved, value, pending, reqs,
+      isStock: s.view === 'stock', isAjout: s.view === 'ajout', isDemandes: s.view === 'demandes',
+      plate: s.plate, studio: s.studio,
+      previewLabel: (s.plate ? 'Plaque masquée' : 'Plaque visible') + (s.studio ? ' · fond studio' : ''),
+      togglePlate: () => this.setState({ plate: !this.state.plate }),
+      toggleStudio: () => this.setState({ studio: !this.state.studio }),
+      goAjout: () => this.setState({ view: 'ajout', toast: '' }),
+      goStock: () => this.setState({ view: 'stock' }),
+      publish: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ view: 'stock', toast: 'Véhicule publié : il apparaît maintenant sur le site.' }); },
+      toast: !!s.toast, toastText: s.toast,
+      closeToast: () => this.setState({ toast: '' })
+    };
+  }
+}
+</script>
+</body>
+</html>

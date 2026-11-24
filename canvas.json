@@ -1,0 +1,67 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 5600,
+      "title": "Accueil",
+      "expand": "fill"
+    },
+    {
+      "file": "Stock.dc.html",
+      "x": 1520,
+      "y": 0,
+      "w": 1440,
+      "h": 2400,
+      "title": "Nos véhicules",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    {
+      "file": "Depot.dc.html",
+      "x": 3040,
+      "y": 0,
+      "w": 1440,
+      "h": 2600,
+      "title": "Dépôt-vente",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    {
+      "file": "Fiche.dc.html",
+      "x": 4560,
+      "y": 0,
+      "w": 1440,
+      "h": 2700,
+      "title": "Fiche véhicule",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    {
+      "file": "Admin.dc.html",
+      "x": 6080,
+      "y": 0,
+      "w": 1440,
+      "h": 1200,
+      "title": "Back-office",
+      "expand": "fill",
+      "is_interactive": true
+    }
+  ],
+  "annotations": [
+    {
+      "id": "titre",
+      "x": 0,
+      "y": -300,
+      "w": 240,
+      "maxW": 7520,
+      "text": "Automobile sur Mesure · Proposition de refonte · Magar Développement",
+      "kind": "title1"
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

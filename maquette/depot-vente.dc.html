@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Automobile sur Mesure · Dépôt-vente</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+a{color:#fff;text-decoration:none}a:hover{color:#c9c9c9}
+</style>
+</helmet>
+<div style="background: #000; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 300; width: 100%">
+
+<header style="position: relative; z-index: 2; border-bottom: 1px solid rgba(255,255,255,0.14); background: #000">
+<div style="max-width: 1320px; margin: 0 auto; padding: 18px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px">
+<a href="Main.dc.html" aria-label="Automobile sur Mesure, accueil"><img src="../assets/logo-asm.jpg" alt="Automobile sur Mesure" style="height: 58px; width: auto; display: block"></a>
+<nav aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; gap: 30px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500">
+<a href="Main.dc.html">Accueil</a>
+<a href="Stock.dc.html">Nos véhicules</a>
+<a href="Depot.dc.html" style="border-bottom: 1px solid #fff; padding-bottom: 4px">Dépôt-vente</a>
+<a href="Main.dc.html#services">Services</a>
+<a href="Main.dc.html#contact">Contact</a>
+</nav>
+<a href="tel:0687426446" style="font-size: 14px; letter-spacing: 0.06em; font-weight: 500">06 87 42 64 46</a>
+</div>
+</header>
+
+<section style="position: relative; height: 560px; overflow: hidden">
+<img src="../assets/photos/rs6-nuit.jpg" alt="Audi RS6 noire stationnée de nuit" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.15) 100%)"></div>
+<div style="position: relative; max-width: 1320px; height: 100%; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; justify-content: center; gap: 22px; box-sizing: border-box">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 500; color: #d6d6d6">Dépôt-vente</p>
+<h1 style="margin: 0; max-width: 640px; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(42px, 5.5vw, 74px); line-height: 1.03">Confiez-nous votre véhicule d'exception</h1>
+<p style="margin: 0; max-width: 500px; font-size: 16px; line-height: 1.7; color: #e4e4e4">Estimation, préparation, diffusion, vente et formalités. Vous restez propriétaire jusqu'à la vente, nous faisons le reste.</p>
+<a href="#estimation" style="align-self: flex-start; margin-top: 6px; background: #fff; color: #000; padding: 18px 30px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600">Demander une estimation</a>
+</div>
+</section>
+
+<section aria-label="Les étapes" style="max-width: 1320px; margin: 0 auto; padding: 100px 40px 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; border-top: 1px solid rgba(255,255,255,0.14)">
+<div style="padding: 34px 28px 0 0; display: flex; flex-direction: column; gap: 12px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 40px">01</span><span style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600">Estimation</span><span style="font-size: 14px; line-height: 1.7; color: #bdbdbd">Vous nous décrivez votre véhicule, nous revenons vers vous avec une estimation.</span></div>
+<div style="padding: 34px 28px 0 0; display: flex; flex-direction: column; gap: 12px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 40px">02</span><span style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600">Préparation</span><span style="font-size: 14px; line-height: 1.7; color: #bdbdbd">Detailing, contrôle et shooting photo en showroom.</span></div>
+<div style="padding: 34px 28px 0 0; display: flex; flex-direction: column; gap: 12px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 40px">03</span><span style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600">Diffusion</span><span style="font-size: 14px; line-height: 1.7; color: #bdbdbd">Mise en ligne sur notre site, nos réseaux et nos canaux de vente.</span></div>
+<div style="padding: 34px 0 0 0; display: flex; flex-direction: column; gap: 12px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 40px">04</span><span style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600">Vente</span><span style="font-size: 14px; line-height: 1.7; color: #bdbdbd">Visites, négociation et démarches administratives gérées par nos soins.</span></div>
+</div>
+</section>
+
+<section id="estimation" aria-labelledby="form-t" style="max-width: 1320px; margin: 0 auto; padding: 80px 40px 120px; display: flex; flex-wrap: wrap; gap: 64px">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 500; color: #a8a8a8">Estimation gratuite</p>
+<h2 id="form-t" style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 48px; line-height: 1.06">Parlez-nous de votre véhicule</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.75; color: #cfcfcf">Remplissez ce formulaire en deux minutes. La demande arrive directement chez nous et nous vous rappelons pour fixer un rendez-vous à Frépillon.</p>
+<img src="../assets/photos/bmw-plaque.jpg" alt="Plaque Automobile sur Mesure sur une BMW noire" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; margin-top: 10px">
+</div>
+
+<div style="flex: 1.4 1 520px; min-width: 0; background: #f9f9f9; color: #000; padding: 48px; box-sizing: border-box">
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="min-height: 520px; display: flex; flex-direction: column; justify-content: center; gap: 18px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 44px; line-height: 1.1">Merci, votre demande est bien envoyée.</span>
+<span style="font-size: 15px; line-height: 1.7; color: #333">Notre équipe vous recontacte rapidement pour l'estimation de votre véhicule.</span>
+<button type="button" onClick="{{reset}}" style="align-self: flex-start; margin-top: 10px; background: transparent; border: 1px solid #000; color: #000; padding: 14px 22px; font-family: inherit; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; min-height: 44px; cursor: pointer">Nouvelle demande</button>
+</div>
+</sc-if>
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{submit}}" style="display: flex; flex-direction: column; gap: 26px">
+<fieldset style="border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px">
+<legend style="font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; margin-bottom: 16px">Le véhicule</legend>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 500">Marque<input type="text" placeholder="Porsche" style="border: 1px solid #c9c9c9; background: #fff; padding: 13px 14px; font-family: inherit; font-size: 15px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 500">Modèle et version<input type="text" placeholder="911 Carrera S" style="border: 1px solid #c9c9c9; background: #fff; padding: 13px 14px; font-family: inherit; font-size: 15px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 500">Année<input type="number" placeholder="2021" style="border: 1px solid #c9c9c9; background: #fff; padding: 13px 14px; font-family: inherit; font-size: 15px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 500">Kilométrage<input type="text" placeholder="25 000 km" style="border: 1px solid #c9c9c9; background: #fff; padding: 13px 14px; font-family: inherit; font-size: 15px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 500">Prix souhaité<input type="text" placeholder="En euros" style="border: 1px solid #c9c9c9; background: #fff; padding: 13px 14px; font-family: inherit; font-size: 15px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 500">Photos du véhicule<input type="file" multiple accept="image/*" style="border: 1px dashed #9a9a9a; background: #fff; padding: 11px 12px; font-family: inherit; font-size: 13px; min-height: 46px; box-sizing: border-box"></label>
+</fieldset>
+<fieldset style="border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px">
+<legend style="font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; margin-bottom: 16px">Vos coordonnées</legend>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 500">Nom et prénom<input type="text" autocomplete="name" style="border: 1px solid #c9c9c9; background: #fff; padding: 13px 14px; font-family: inherit; font-size: 15px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 500">Téléphone<input type="tel" autocomplete="tel" style="border: 1px solid #c9c9c9; background: #fff; padding: 13px 14px; font-family: inherit; font-size: 15px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 500">Email<input type="email" autocomplete="email" style="border: 1px solid #c9c9c9; background: #fff; padding: 13px 14px; font-family: inherit; font-size: 15px; min-height: 46px; box-sizing: border-box"></label>
+</fieldset>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 500">Précisions (options, entretien, historique)<textarea rows="4" style="border: 1px solid #c9c9c9; background: #fff; padding: 13px 14px; font-family: inherit; font-size: 15px; resize: vertical"></textarea></label>
+<label style="display: flex; gap: 12px; align-items: flex-start; font-size: 13px; line-height: 1.6; color: #333"><input type="checkbox" style="width: 20px; height: 20px; margin: 0; flex: none">J'accepte que mes données soient utilisées pour traiter ma demande.</label>
+<button type="submit" style="align-self: flex-start; background: #000; color: #fff; border: 0; padding: 19px 34px; font-family: inherit; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; min-height: 52px; cursor: pointer">Envoyer ma demande</button>
+</form>
+</sc-if>
+</div>
+</section>
+
+<footer style="border-top: 1px solid rgba(255,255,255,0.14)">
+<div style="max-width: 1320px; margin: 0 auto; padding: 30px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 12px; color: #8f8f8f">
+<span>© 2026 Automobile sur Mesure · 8 avenue Roland Moreno, 95740 Frépillon</span>
+<span>Mentions légales · Confidentialité</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2600}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { sent: false }; }
+  renderVals() {
+    const sent = this.state.sent;
+    return {
+      sent: sent,
+      notSent: !sent,
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
