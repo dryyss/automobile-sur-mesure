@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espace gestion (démo) · Automobile sur Mesure</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+<style>body{margin:0;background:#f4f3f0}</style>
+</head>
+<body>
+
+<div class="login" id="login" role="dialog" aria-modal="true" aria-labelledby="login-t">
+  <div class="login__media"><img src="assets/photos/urus.jpg" alt=""></div>
+  <form class="login__box" id="login-form">
+    <img src="assets/logo-asm.jpg" alt="Automobile sur Mesure">
+    <h1 id="login-t">Espace gestion</h1>
+    <p>Démonstration du back-office : stock, statuts, mise en avant, photos et demandes reçues depuis le site. Les modifications sont visibles immédiatement sur le site public de ce navigateur.</p>
+    <label>Identifiant<input type="text" value="garage@automobilesurmesure.com" autocomplete="off"></label>
+    <label>Mot de passe<input type="password" value="demonstration" autocomplete="off"></label>
+    <button type="submit">Accéder à la démo →</button>
+    <small>Aucune donnée n'est envoyée : tout reste dans votre navigateur.</small>
+  </form>
+</div>
+
+<div class="admin">
+  <aside class="side" aria-label="Menu du back-office">
+    <img src="assets/logo-asm.jpg" alt="Automobile sur Mesure">
+    <nav>
+      <a class="side__link" href="#tableau" data-nav="tableau"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z"/></svg>Tableau de bord</span></a>
+      <a class="side__link" href="#vehicules" data-nav="vehicules"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15l2-6c.3-.9 1.1-1.5 2-1.5h10c.9 0 1.7.6 2 1.5l2 6v4h-3v-2H6v2H3z"/><circle cx="7.5" cy="14" r="1"/><circle cx="16.5" cy="14" r="1"/></svg>Véhicules</span><span class="side__badge" data-badge-stock></span></a>
+      <a class="side__link" href="#demandes" data-nav="demandes"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v11H8l-4 4z"/></svg>Demandes</span><span class="side__badge" data-badge-leads></span></a>
+    </nav>
+    <div class="side__foot">
+      <span class="user"><i>AS</i>Administrateur</span>
+      <a href="index.html" target="_blank" rel="noopener">Voir le site ↗</a>
+      <button type="button" data-reset-demo>Réinitialiser la démo</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section class="view" id="v-tableau" aria-labelledby="h-tableau"></section>
+    <section class="view" id="v-vehicules" aria-labelledby="h-vehicules"></section>
+    <section class="view" id="v-demandes" aria-labelledby="h-demandes"></section>
+  </main>
+</div>
+
+<div class="amodal" id="car-modal" aria-hidden="true">
+  <div class="amodal__panel" role="dialog" aria-modal="true" aria-labelledby="car-modal-t">
+    <form id="car-form" novalidate></form>
+  </div>
+</div>
+
+<div class="atoasts" role="status" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

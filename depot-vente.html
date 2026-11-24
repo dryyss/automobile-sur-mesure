@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dépôt-vente de véhicules de prestige · Automobile sur Mesure · Frépillon</title>
+<meta name="description" content="Confiez la vente de votre véhicule de sport ou de prestige : estimation gratuite, préparation, photos, diffusion et formalités. Showroom à Frépillon (95).">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<script>(function(d){d.classList.add('js');try{if(!sessionStorage.getItem('asm:intro'))d.classList.add('is-intro')}catch(e){}})(document.documentElement)</script>
+</head>
+<body data-page="depot" data-header="overlay">
+<div class="loader" id="loader" aria-hidden="true"><div class="loader__inner"><img src="assets/logo-asm.jpg" alt=""><div class="loader__bar"><span></span></div></div></div>
+<div id="site-header"></div>
+
+<main>
+  <section class="page-hero" aria-label="Dépôt-vente">
+    <img src="assets/photos/rs6-nuit.jpg" alt="Audi RS6 noire stationnée de nuit">
+    <div class="wrap">
+      <p class="eyebrow hero__fade" style="--d:.1s;color:#d6d6d6">Dépôt-vente</p>
+      <h1 class="display h1" style="font-size:clamp(46px,6.4vw,96px);max-width:900px">
+        <span class="split-line"><span style="--d:.15s">Confiez-nous votre</span></span>
+        <span class="split-line"><span style="--d:.3s"><em>véhicule d'exception.</em></span></span>
+      </h1>
+      <p class="lead hero__fade" style="--d:.5s;color:#e4e4e4">Estimation, préparation, diffusion, vente et formalités. Vous restez propriétaire jusqu'à la vente, nous faisons le reste.</p>
+      <div class="hero__cta hero__fade" style="--d:.65s"><a class="btn btn--solid" href="#estimation">Demander une estimation <span class="arrow">→</span></a><a class="btn" href="tel:+33687426446">06 87 42 64 46</a></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="steps-t">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-head__title"><p class="eyebrow" data-reveal>Comment ça marche</p><h2 class="display h2" id="steps-t" data-reveal style="--d:.08s">Quatre étapes, <em>zéro contrainte</em></h2></div>
+      </div>
+      <div class="steps">
+        <div class="step" style="--d:0s"><span class="step__n">01</span><span class="step__t">Estimation</span><span class="step__d">Vous nous décrivez votre véhicule, nous revenons vers vous avec une estimation argumentée.</span></div>
+        <div class="step" style="--d:.15s"><span class="step__n">02</span><span class="step__t">Préparation</span><span class="step__d">Detailing, contrôle et shooting photo en showroom, plaque masquée.</span></div>
+        <div class="step" style="--d:.3s"><span class="step__n">03</span><span class="step__t">Diffusion</span><span class="step__d">Mise en ligne sur notre site, nos réseaux et nos canaux de vente spécialisés.</span></div>
+        <div class="step" style="--d:.45s"><span class="step__n">04</span><span class="step__t">Vente</span><span class="step__d">Visites, essais, négociation et démarches administratives gérées par nos soins.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark" id="estimation" aria-labelledby="form-t" style="scroll-margin-top:60px">
+    <div class="wrap booking" style="grid-template-columns:1fr 1.35fr">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <p class="eyebrow" data-reveal>Estimation gratuite</p>
+        <h2 class="display h2" id="form-t" data-reveal style="--d:.08s">Parlez-nous de <em>votre véhicule</em></h2>
+        <p class="lead" data-reveal style="--d:.16s">Deux minutes suffisent. La demande arrive directement chez nous, avec vos photos, et nous vous rappelons pour fixer un rendez-vous à Frépillon.</p>
+        <div data-reveal="img" style="--d:.2s;overflow:hidden;margin-top:10px"><img src="assets/photos/bmw-plaque.jpg" alt="Plaque Automobile sur Mesure sur une BMW noire" style="width:100%;aspect-ratio:16/10;object-fit:cover" loading="lazy"></div>
+      </div>
+
+      <div class="wizard light" data-reveal style="--d:.1s">
+        <div class="wizard__progress" aria-hidden="true">
+          <span class="wizard__dot is-current">1 · Le véhicule</span>
+          <span class="wizard__dot">2 · Les photos</span>
+          <span class="wizard__dot">3 · Vos coordonnées</span>
+        </div>
+        <form data-wizard novalidate>
+          <fieldset class="wizard__step is-active" style="border:0;margin:0;padding:0">
+            <legend class="sr-only">Étape 1 sur 3 : le véhicule</legend>
+            <h3>Le véhicule</h3>
+            <div class="form-grid">
+              <label class="field">Marque<input class="input" name="marque" placeholder="Porsche" data-req="Indiquez la marque"></label>
+              <label class="field">Modèle et version<input class="input" name="modele" placeholder="911 Carrera S" data-req="Indiquez le modèle"></label>
+              <label class="field">Année<input class="input" name="annee" type="number" min="1950" max="2027" placeholder="2021" inputmode="numeric" data-req="Indiquez l'année"></label>
+              <label class="field">Kilométrage<input class="input" name="km" placeholder="25 000 km" inputmode="numeric" data-req="Indiquez le kilométrage"></label>
+              <label class="field">Prix souhaité (facultatif)<input class="input" name="prix" placeholder="En euros" inputmode="numeric"></label>
+              <label class="field">Carnet d'entretien
+                <select class="select" name="carnet"><option>Complet, réseau constructeur</option><option>Complet, garage spécialisé</option><option>Partiel</option><option>Je ne sais pas</option></select></label>
+            </div>
+            <div class="wizard__nav"><span></span><button class="btn btn--dark btn--solid" type="button" data-next>Continuer <span class="arrow">→</span></button></div>
+          </fieldset>
+
+          <fieldset class="wizard__step" style="border:0;margin:0;padding:0">
+            <legend class="sr-only">Étape 2 sur 3 : les photos</legend>
+            <h3>Les photos</h3>
+            <p style="margin:0;font-size:14px;color:#444">Trois quarts avant, arrière, intérieur, compteur : quelques photos suffisent pour une première estimation. Vous pouvez aussi passer cette étape.</p>
+            <label class="dropzone" data-dropzone>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 15v5h16v-5"/></svg>
+              <strong style="font-weight:600">Glissez vos photos ici</strong>
+              <small>ou cliquez pour les choisir · 12 photos maximum</small>
+              <input type="file" accept="image/*" multiple class="sr-only">
+            </label>
+            <span style="font-size:12px;color:#555" data-photo-count aria-live="polite"></span>
+            <div class="previews" data-previews></div>
+            <div class="wizard__nav"><button class="btn btn--dark" type="button" data-prev>← Retour</button><button class="btn btn--dark btn--solid" type="button" data-next>Continuer <span class="arrow">→</span></button></div>
+          </fieldset>
+
+          <fieldset class="wizard__step" style="border:0;margin:0;padding:0">
+            <legend class="sr-only">Étape 3 sur 3 : vos coordonnées</legend>
+            <h3>Vos coordonnées</h3>
+            <dl class="recap" data-recap></dl>
+            <div class="form-grid">
+              <label class="field">Nom et prénom<input class="input" name="name" autocomplete="name" data-req="Indiquez votre nom"></label>
+              <label class="field">Téléphone<input class="input" name="phone" type="tel" autocomplete="tel" data-req="Indiquez votre téléphone"></label>
+              <label class="field full">Email<input class="input" name="email" type="email" autocomplete="email" data-req="Indiquez votre email"></label>
+              <label class="field full">Précisions (options, historique, état)<textarea class="textarea" name="notes" rows="3"></textarea></label>
+            </div>
+            <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <label class="check"><input type="checkbox" name="rgpd" data-req="Merci d'accepter pour envoyer">J'accepte que mes données soient utilisées pour traiter ma demande.</label>
+            <div class="wizard__nav"><button class="btn btn--dark" type="button" data-prev>← Retour</button><button class="btn btn--dark btn--solid" type="submit">Envoyer ma demande <span class="arrow">→</span></button></div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

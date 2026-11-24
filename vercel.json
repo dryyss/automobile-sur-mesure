@@ -1,15 +1,19 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": false,
+  "cleanUrls": true,
   "redirects": [
-    { "source": "/", "destination": "/maquette/accueil.dc.html", "permanent": false },
-    { "source": "/vehicules", "destination": "/maquette/vehicules.dc.html", "permanent": false },
-    { "source": "/depot-vente", "destination": "/maquette/depot-vente.dc.html", "permanent": false },
-    { "source": "/fiche", "destination": "/maquette/fiche-vehicule.dc.html", "permanent": false },
-    { "source": "/admin", "destination": "/maquette/back-office.dc.html", "permanent": false },
+    { "source": "/fiche", "destination": "/vehicule", "permanent": false },
+    { "source": "/stock", "destination": "/vehicules", "permanent": true },
+    { "source": "/accueil", "destination": "/", "permanent": true },
+    { "source": "/rendez-vous", "destination": "/contact", "permanent": false },
+    { "source": "/recherche-personnalisee", "destination": "/contact?motif=recherche", "permanent": false },
+    { "source": "/maquette", "destination": "/maquette/accueil.dc.html", "permanent": false },
     { "source": "/maquette/Main.dc.html", "destination": "/maquette/accueil.dc.html", "permanent": false },
     { "source": "/maquette/Stock.dc.html", "destination": "/maquette/vehicules.dc.html", "permanent": false },
     { "source": "/maquette/Depot.dc.html", "destination": "/maquette/depot-vente.dc.html", "permanent": false },
     { "source": "/maquette/Fiche.dc.html", "destination": "/maquette/fiche-vehicule.dc.html", "permanent": false }
+  ],
+  "headers": [
+    { "source": "/admin", "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }] }
   ]
 }

@@ -1,0 +1,93 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Tests navigateur · Automobile sur Mesure</title>
+<!-- Parcours complet : catalogue, fiche, contact, dépôt-vente, back-office.
+     Lancer : node tests/serve.js puis ouvrir http://localhost:5173/tests/navigateur.html
+     Attention : vide le localStorage du site (données de démo). -->
+<body style="margin:0;font:18px monospace;background:#fff;color:#000">
+<pre id="out" style="padding:20px;white-space:pre-wrap"></pre>
+<iframe id="f" title="Page testée" style="width:1280px;height:900px;border:0;position:absolute;left:-3000px"></iframe>
+<script>
+localStorage.clear(); sessionStorage.setItem('asm:intro', '1');
+var out = document.getElementById('out'), f = document.getElementById('f'), results = [];
+function log(ok, msg) { results.push((ok ? 'OK   ' : 'FAIL ') + msg); out.textContent = results.join('\n'); }
+function load(url) {
+  return new Promise(function (r) {
+    var done = false;
+    function go(why) { if (done) return; done = true; if (why) log(true, '(chargement ' + url + ' : ' + why + ')'); setTimeout(function () { r(f.contentWindow); }, 400); }
+    f.onload = function () { go(); };
+    setTimeout(function () { go('onload non reçu après 4 s'); }, 4000);
+    f.src = url;
+  });
+}
+function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+function set(d, sel, v) { var e = d.querySelector(sel); e.value = v; e.dispatchEvent(new Event('input', { bubbles: true })); }
+(async function () {
+  try {
+    var w = await load('/vehicules'); var d = w.document;
+    var n0 = d.querySelectorAll('[data-grid] .car').length;
+    log(n0 === 19, 'catalogue : ' + n0 + ' véhicules publics (brouillon masqué)');
+    d.querySelector('[data-brand="Porsche"]').click(); await wait(50);
+    var np = d.querySelectorAll('[data-grid] .car').length;
+    log(np === 7, 'filtre Porsche : ' + np);
+    log(/marque=Porsche/.test(w.location.search), 'URL synchronisée : ' + w.location.search);
+    set(d, '[name=q]', 'gt3'); await wait(400);
+    log(d.querySelectorAll('[data-grid] .car').length === 2, 'recherche "gt3" : ' + d.querySelectorAll('[data-grid] .car').length);
+    d.querySelector('[data-reset]').click(); await wait(50);
+    log(d.querySelectorAll('[data-grid] .car').length === 19, 'réinitialisation');
+    log(!!d.querySelector('.badge--warn'), 'badge Réservé visible');
+    d.querySelector('[data-fav]').click(); await wait(50);
+    log(d.querySelector('[data-fav-count]').textContent === '1', 'favori ajouté, compteur = ' + d.querySelector('[data-fav-count]').textContent);
+
+    w = await load('/vehicule?v=lamborghini-urus-performante'); d = w.document;
+    log(/Urus/.test(d.title), 'fiche : titre ' + d.title);
+    log(!!d.querySelector('script[type="application/ld+json"]'), 'fiche : données structurées Car');
+    var m1 = d.querySelector('[data-monthly]').textContent;
+    var r = d.querySelector('#r-duree'); r.value = 84; r.dispatchEvent(new Event('input'));
+    var m2 = d.querySelector('[data-monthly]').textContent;
+    log(m1 !== m2, 'simulateur réagit : ' + m1 + ' → ' + m2);
+    var form = d.querySelector('[data-interest]');
+    form.requestSubmit(); await wait(50);
+    log(d.querySelectorAll('.is-error').length >= 3, 'validation : ' + d.querySelectorAll('.is-error').length + ' erreurs sur formulaire vide');
+    set(d, '[name=name]', 'Client Test'); set(d, '[name=phone]', '06 12 34 56 78');
+    form.querySelector('[name=rgpd]').checked = true;
+    form.requestSubmit(); await wait(100);
+    log(!!d.querySelector('.success'), 'fiche : demande envoyée');
+
+    w = await load('/contact?motif=recherche'); d = w.document;
+    log(d.querySelector('[data-if="recherche"]').classList.contains('is-on'), 'contact : champs recherche affichés via ?motif=recherche');
+    d.querySelector('#m-visite').click(); d.querySelector('#m-visite').dispatchEvent(new Event('change', { bubbles: true }));
+    d.querySelector('[data-day="1"]').click(); await wait(30);
+    var slot = d.querySelector('[data-slot]:not([disabled])'); slot.click();
+    set(d, '[name=name]', 'Visite Test'); set(d, '[name=phone]', '0611223344'); set(d, '[name=email]', 'test@exemple.fr');
+    d.querySelector('[name=rgpd]').checked = true;
+    d.querySelector('[data-booking]').requestSubmit(); await wait(100);
+    log(!!d.querySelector('.success'), 'contact : rendez-vous demandé');
+
+    w = await load('/depot-vente?modele=911%20Carrera%20S&km=25000'); d = w.document;
+    log(d.querySelector('[name=modele]').value === '911 Carrera S', 'dépôt : pré-rempli depuis l\'accueil');
+    d.querySelector('[data-next]').click(); await wait(30);
+    log(d.querySelector('.wizard__step.is-active [name=marque]') !== null, 'dépôt : bloqué tant que la marque manque');
+    set(d, '[name=marque]', 'Porsche'); set(d, '[name=annee]', '2021');
+    d.querySelectorAll('[data-next]')[0].click(); await wait(30);
+    d.querySelectorAll('[data-next]')[1].click(); await wait(30);
+    log(/Porsche 911 Carrera S/.test(d.querySelector('[data-recap]').textContent), 'dépôt : récapitulatif');
+    set(d, '[name=name]', 'Vendeur Test'); set(d, '[name=phone]', '0699887766'); set(d, '[name=email]', 'v@exemple.fr');
+    d.querySelector('[name=rgpd]').checked = true;
+    d.querySelector('[data-wizard]').requestSubmit(); await wait(100);
+    log(!!d.querySelector('.success'), 'dépôt : demande envoyée');
+
+    sessionStorage.setItem('asm:admin', '1');
+    w = await load('/admin#demandes'); d = w.document; await wait(200);
+    var leads = d.querySelectorAll('.lead').length;
+    log(leads === 12, 'back-office : ' + leads + ' demandes (9 exemples + 3 envoyées)');
+    log(/Vendeur Test/.test(d.querySelector('.lead').textContent), 'back-office : la dernière demande est en tête');
+    w.location.hash = 'vehicules'; await wait(200);
+    var sel = d.querySelector('[data-status="ferrari-portofino"]'); sel.value = 'sold'; sel.dispatchEvent(new Event('change', { bubbles: true }));
+    w = await load('/vehicules'); d = w.document;
+    log(d.querySelectorAll('[data-grid] .car').length === 18 && !/Portofino/.test(d.querySelector('[data-grid]').textContent), 'statut Vendu → retiré du catalogue');
+  } catch (e) { log(false, 'EXCEPTION ' + e.message + '\n' + e.stack); }
+  log(true, 'FIN');
+})();
+</script>
+</body>

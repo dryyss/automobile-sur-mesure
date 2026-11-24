@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nos véhicules · Automobile sur Mesure · Frépillon (95)</title>
+<meta name="description" content="Porsche, Lamborghini, Ferrari, Bentley, Mercedes-AMG, Audi, BMW : le stock de véhicules de sport et de prestige d'Automobile sur Mesure, visible sur rendez-vous à Frépillon.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<script>(function(d){d.classList.add('js');try{if(!sessionStorage.getItem('asm:intro'))d.classList.add('is-intro')}catch(e){}})(document.documentElement)</script>
+</head>
+<body data-page="stock">
+<div class="loader" id="loader" aria-hidden="true"><div class="loader__inner"><img src="assets/logo-asm.jpg" alt=""><div class="loader__bar"><span></span></div></div></div>
+<div id="site-header"></div>
+
+<main class="page-offset">
+  <section class="wrap page-head">
+    <nav class="crumbs" aria-label="Fil d'Ariane" data-reveal><a href="index.html">Accueil</a><span>/</span><span aria-current="page">Nos véhicules</span></nav>
+    <h1 class="display h1" style="font-size:clamp(52px,7vw,104px)"><span class="split-line"><span style="--d:.1s">Nos <em>véhicules</em></span></span></h1>
+    <p class="lead hero__fade" style="--d:.3s">Sport, prestige et exception. Chaque véhicule est sélectionné, contrôlé et visible sur rendez-vous au showroom de Frépillon.</p>
+  </section>
+
+  <section class="filters" aria-label="Filtres">
+    <div class="wrap">
+      <div class="filters__row" data-chips></div>
+      <form class="filters__grid" data-filters-form role="search">
+        <label class="field">Recherche<input class="input" type="search" name="q" placeholder="GT3, Urus, RS6…" autocomplete="off"></label>
+        <label class="field">Budget max
+          <select class="select" name="budget"><option value="">Tous les prix</option><option value="130000">130 000 €</option><option value="150000">150 000 €</option><option value="200000">200 000 €</option><option value="250000">250 000 €</option><option value="400000">400 000 €</option></select></label>
+        <label class="field">Année min
+          <select class="select" name="annee"><option value="">Toutes</option><option value="2018">2018</option><option value="2020">2020</option><option value="2023">2023</option><option value="2024">2024</option></select></label>
+        <label class="field">Kilométrage max
+          <select class="select" name="km"><option value="">Tous</option><option value="5000">5 000 km</option><option value="10000">10 000 km</option><option value="20000">20 000 km</option><option value="30000">30 000 km</option><option value="50000">50 000 km</option></select></label>
+        <label class="field">Trier par
+          <select class="select" name="tri"><option value="prix-desc">Prix décroissant</option><option value="prix-asc">Prix croissant</option><option value="recents">Plus récents</option><option value="km">Kilométrage</option><option value="puissance">Puissance</option></select></label>
+      </form>
+    </div>
+  </section>
+
+  <section class="wrap" aria-label="Véhicules" style="padding-bottom:120px">
+    <div class="results-bar"><span data-count-results aria-live="polite"></span><button class="reset" type="button" data-reset>Réinitialiser les filtres</button></div>
+    <div class="grid-cars" data-grid></div>
+    <div class="cta-band" data-reveal>
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:640px">
+        <h2 class="display h3">Vous ne trouvez pas votre modèle ?</h2>
+        <p class="lead" style="margin:0">Recherche personnalisée et importation : dites-nous ce que vous cherchez, nous le trouvons pour vous, en France ou à l'étranger.</p>
+      </div>
+      <a class="btn btn--solid" href="contact.html?motif=recherche">Lancer une recherche <span class="arrow">→</span></a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

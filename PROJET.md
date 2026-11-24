@@ -40,6 +40,8 @@ Dépôt-vente, recherche personnalisée, transport et livraison, atelier mécani
 
 - Maquette en ligne : https://claude.ai/artifact/12SKTFK5WHWJdydWdAB1Ru
 - Sources dans `maquette/` (5 écrans : Accueil, Nos véhicules, Fiche véhicule, Dépôt-vente, Back-office).
+- Prototype interactif v2 à la racine du dépôt (voir `README.md`) : filtres réels, fiche dynamique, formulaires, prise de rendez-vous et back-office de démonstration relié au site.
+- Ajouts proposés à valider avec le client : simulateur de financement sur la fiche (le client propose-t-il du financement ?), favoris, prise de rendez-vous par créneau, indicateur « ouvert / fermé ».
 
 ### Charte graphique (reprise du site actuel)
 
@@ -53,7 +55,7 @@ Dépôt-vente, recherche personnalisée, transport et livraison, atelier mécani
 | Texte courant | Montserrat 300 à 600 (équivalent libre de Proxima Nova, utilisée sur leur site) |
 | Libellés | Montserrat 500/600, majuscules, interlettrage 0.18em à 0.34em |
 | Logo | Monogramme ASM + « AUTOMOBILE SUR MESURE », blanc sur noir (`assets/logo-asm.jpg`) |
-| Style | Aucune animation au scroll (le parallax a été écarté). Survols discrets uniquement |
+| Style | Pas de parallax (écarté). Prototype v2 : apparitions douces au défilement, zoom lent sur les photos d'ouverture, bande des marques défilante. Tout est coupé si le visiteur a activé « réduire les animations » [À VALIDER avec le client] |
 
 ## 5. Arborescence
 
